@@ -1,0 +1,51 @@
+{
+  "name": "blog-platform",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "playwright test",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.2",
+    "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.7",
+    "cookie": "^0.7.1",
+    "js-cookie": "^3.0.5",
+    "next": "14.2.14",
+    "next-redux-wrapper": "^8.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-redux": "^9.1.2"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.9.0",
+    "@playwright/test": "^1.47.2",
+    "@storybook/addon-essentials": "^8.3.5",
+    "@storybook/addon-interactions": "^8.3.5",
+    "@storybook/addon-links": "^8.3.5",
+    "@storybook/addon-onboarding": "^8.3.5",
+    "@storybook/blocks": "^8.3.5",
+    "@storybook/nextjs": "^8.3.5",
+    "@storybook/react": "^8.3.5",
+    "@storybook/test": "^8.3.5",
+    "@types/cookie": "^0.6.0",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^20.16.10",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.14",
+    "eslint-plugin-storybook": "^0.9.0",
+    "prettier": "^3.8.1",
+    "storybook": "^8.3.5",
+    "typescript": "^5.6.2"
+  }
+}

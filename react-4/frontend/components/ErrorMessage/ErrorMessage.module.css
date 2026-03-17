@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: var(--radius);
+  max-width: 600px;
+  margin: 16px auto;
+}
+
+.icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.text {
+  color: var(--error-text);
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}

@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  database:
+    image: postgres:latest
+    container_name: my_postgres_db  # Опционально: Укажите имя контейнера
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: blog
+    ports:
+      - "5432:5432"  # Проброс порта для доступа к БД из вашего хоста
+    volumes:
+      - postgres_data:/var/lib/postgresql # Псевдоним тома для хранения данных
+
+volumes:
+  postgres_data:
