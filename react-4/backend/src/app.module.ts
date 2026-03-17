@@ -11,13 +11,15 @@ import { ImagesModule } from './images/images.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'username',
-      password: 'password',
-      database: 'blog',
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT || '5432', 10),
+      username: process.env.DB_USERNAME || 'username',
+      password: process.env.DB_PASSWORD || 'password',
+      database: process.env.DB_NAME || 'blog',
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
-      synchronize: true, // Только для разработки, уберите в продакшене
+      synchronize: true,
+      ssl:
+        process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
     }),
     UsersModule,
     ArticlesModule,
