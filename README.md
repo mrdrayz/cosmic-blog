@@ -2,7 +2,6 @@
 
 Блог-платформа "Cosmic Blog", построенная на **Next.js** (фронтенд) и **NestJS** (бэкенд). Позволяет пользователям регистрироваться, создавать статьи, оставлять комментарии и управлять контентом.
 
-
 ### Функциональные возможности
 
 - **Регистрация и авторизация** — JWT-аутентификация с безопасным хранением токенов в cookies
@@ -15,11 +14,10 @@
 - **Storybook** — интерактивная документация для 5 UI-компонентов
 - **E2E-тесты** — 10 тестов на Playwright, покрывающих ключевые сценарии
 
-
 ### Технологии
 
 | Слой            | Технологии                                    |
-|-----------------|-----------                                    |
+| --------------- | --------------------------------------------- |
 | Фронтенд        | Next.js 14, React 18, TypeScript, CSS Modules |
 | Состояние       | Redux Toolkit + next-redux-wrapper            |
 | HTTP-клиент     | Axios с interceptors                          |
@@ -28,76 +26,72 @@
 | Документация UI | Storybook 8                                   |
 | Форматирование  | Prettier, ESLint                              |
 
-
 ### Запуск и настройка
 
-1. **Запуск Базы Данных**. 
-   
-   Вариант 1 (Использование Docker). Убедитесь, что Docker установлен, перейдите в папку `backend` и выполните:
+1. **Запуск Базы Данных**.
 
-   ```bash
-   docker-compose up -d
-   ```
+    Вариант 1 (Использование Docker). Убедитесь, что Docker установлен, перейдите в папку `backend` и выполните:
 
-   Вариант 2 (Использование PostgreSQL): Убедитесь, что PostgreSQL установлен, затем откройте SQL Shell (psql) и выполните:
+    ```bash
+    docker-compose up -d
+    ```
+
+    Вариант 2 (Использование PostgreSQL): Убедитесь, что PostgreSQL установлен, затем откройте SQL Shell (psql) и выполните:
 
     CREATE USER username WITH PASSWORD 'password';
     CREATE DATABASE blog OWNER username;
     GRANT ALL PRIVILEGES ON DATABASE blog TO username;
 
-
 2. **Запуск бэкенда**. Перейдите в папку `backend` и выполните:
-   ```bash
-   npm install
-   npm run start
-   ```
 
-   Бэкенд запустится на http://localhost:3001. Swagger-документация доступна по адресу http://localhost:3001/api.
+    ```bash
+    npm install
+    npm run start
+    ```
 
+    Бэкенд запустится на http://localhost:3001. Swagger-документация доступна по адресу http://localhost:3001/api.
 
 3. **Запуск фронтенда**. Перейдите в папку `frontend` и выполните:
-   ```bash
-   npm install
-   npm run dev
-   ```
 
-   Приложение будет доступно на http://localhost:3000.
+    ```bash
+    npm install
+    npm run dev
+    ```
 
+    Приложение будет доступно на http://localhost:3000.
 
 4. **Настройка и запуск Storybook**. Установите Storybook и настройте его:
-   ```bash
-   npx sb init
-   npm run storybook
-   ```
 
+    ```bash
+    npx sb init
+    npm run storybook
+    ```
 
 5. **Запуск тестов Playwright**. Убедитесь, что Playwright установлен и выполните:
-   ```bash
-   npx playwright test
-   ```
+    ```bash
+    npx playwright test
+    ```
 
---- 
-
+---
 
 ### API-эндопинты бэкэнда
 
-|Метод	 | URL	                    | Описание                          |
-|------- |--------------------------|------------------------------------ 
-|POST	 | /auth/login	            | Авторизация                       |
-|POST	 | /auth/refresh	        | Обновление токена                 |
-|POST	 | /users/register	        | Регистрация                       |
-|GET	 | /users/me	            | Текущий пользователь              |
-|GET	 | /users/:id	            | Пользователь по ID                |
-|GET	 | /articles	            | Список статей (пагинация + поиск) |
-|GET	 | /articles/:id	        | Статья по ID                      |
-|POST	 | /articles	            | Создание статьи                   |
-|PATCH	 | /articles/:id	        | Обновление статьи                 |
-|DELETE	 | /articles/:id	        | Удаление статьи                   |
-|GET	 | /comments/article/:id	| Комментарии к статье              |
-|POST	 | /comments	            | Создание комментария              |
+| Метод  | URL                   | Описание                          |
+| ------ | --------------------- | --------------------------------- |
+| POST   | /auth/login           | Авторизация                       |
+| POST   | /auth/refresh         | Обновление токена                 |
+| POST   | /users/register       | Регистрация                       |
+| GET    | /users/me             | Текущий пользователь              |
+| GET    | /users/:id            | Пользователь по ID                |
+| GET    | /articles             | Список статей (пагинация + поиск) |
+| GET    | /articles/:id         | Статья по ID                      |
+| POST   | /articles             | Создание статьи                   |
+| PATCH  | /articles/:id         | Обновление статьи                 |
+| DELETE | /articles/:id         | Удаление статьи                   |
+| GET    | /comments/article/:id | Комментарии к статье              |
+| POST   | /comments             | Создание комментария              |
 
-
-### Скрипты 
+### Скрипты
 
 - **npm run dev** — Запуск фронтенда в режиме разработки
 - **npm run build** — Сборка продакшн-версии
