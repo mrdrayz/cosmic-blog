@@ -24,6 +24,11 @@
   opacity: 0.8;
 }
 
+.ownerActions {
+  display: flex;
+  gap: 8px;
+}
+
 .editButton {
   display: inline-flex;
   align-items: center;
@@ -45,6 +50,107 @@
   opacity: 0.9;
   transform: scale(1.03);
   box-shadow: var(--shadow-glow);
+}
+
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: none;
+  border: 1px solid var(--error-border);
+  color: var(--error-text);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.deleteButton:hover:not(:disabled) {
+  background-color: var(--error-bg);
+  transform: scale(1.03);
+}
+
+.deleteButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.deleteConfirm {
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.deleteConfirmText {
+  color: var(--error-text);
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.deleteConfirmButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  padding: 8px 20px;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.cancelBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-purple);
+}
+
+.confirmDeleteBtn {
+  padding: 8px 20px;
+  background-color: #dc2626;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+.confirmDeleteBtn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.confirmDeleteBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .imageWrapper {

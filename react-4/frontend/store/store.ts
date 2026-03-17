@@ -21,10 +21,15 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(
       (action): action is PayloadAction<{ auth: AuthState }> => action.type === HYDRATE,
-      (state, action) => ({
-        token: state.token,
-        user: action.payload.auth.user,
-      }),
+      (state, action) => {
+        const serverUser = action.payload.auth.user;
+        const clientHasToken = Boolean(state.token);
+
+        return {
+          token: state.token,
+          user: clientHasToken ? state.user : serverUser,
+        };
+      },
     );
   },
 });

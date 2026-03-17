@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { ReactElement } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import SafeImage from '../SafeImage/SafeImage';
 import type { Article } from '../../types';
 import styles from './ArticleCard.module.css';
 
@@ -27,12 +27,12 @@ function ArticleCard({ article }: ArticleCardProps): ReactElement {
     <Link href={`/articles/${article.id}`} className={styles.card}>
       {article.previewImage && (
         <div className={styles.imageWrapper}>
-          <Image
-            className={styles.image}
+          <SafeImage
             src={article.previewImage}
             alt={article.title}
             fill
             sizes="(max-width: 768px) 100vw, 400px"
+            className={styles.image}
           />
         </div>
       )}

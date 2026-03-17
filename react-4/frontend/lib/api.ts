@@ -137,3 +137,7 @@ export async function updateArticle(id: number, title: string, content: string):
 
   return normalizeArticle(data);
 }
+
+export async function deleteArticle(id: number): Promise<void> {
+  await api.delete(`/articles/${id}`);
+}
