@@ -7,20 +7,34 @@ import { CommentsModule } from './comments/comments.module';
 import { AuthModule } from './auth/auth.module';
 import { ImagesModule } from './images/images.module';
 
-@Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432', 10),
-      username: process.env.DB_USERNAME || 'username',
-      password: process.env.DB_PASSWORD || 'password',
-      database: process.env.DB_NAME || 'blog',
+function getDatabaseConfig() {
+  const databaseUrl = process.env.DATABASE_URL;
+
+  if (databaseUrl) {
+    return {
+      type: 'postgres' as const,
+      url: databaseUrl,
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
       synchronize: true,
-      ssl:
-        process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
-    }),
+      ssl: { rejectUnauthorized: false },
+    };
+  }
+
+  return {
+    type: 'postgres' as const,
+    host: 'localhost',
+    port: 5432,
+    username: 'username',
+    password: 'password',
+    database: 'blog',
+    entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+    synchronize: true,
+  };
+}
+
+@Module({
+  imports: [
+    TypeOrmModule.forRoot(getDatabaseConfig()),
     UsersModule,
     ArticlesModule,
     CommentsModule,
